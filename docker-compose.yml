@@ -1,0 +1,47 @@
+version: '3.0'
+
+services:
+
+  monitor:
+    container_name: monitor
+    image: buythewhale/ethstats_monitor
+    volumes:
+      - ./app.json:/home/ethnetintel/eth-net-intelligence-api/app.json
+
+  dashboard:
+    container_name: dashboard
+    image: buythewhale/ethstats
+    volumes:
+      - ./ws_secret.json:/eth-netstats/ws_secret.json
+    ports:
+      - 3001:3000
+    depends_on:
+      - monitor
+
+  openethereum_0:
+    container_name: openethereum_0
+    image: openethereum/openethereum:latest
+    user: root
+    working_dir: /home/openethereum
+    volumes:
+      - ./demo-spec.json:/home/openethereum/demo-spec.json
+      - ./data/openethereum_0:/home/openethereum/data
+      - ./node0.startup.toml:/home/openethereum/node0.startup.toml
+      - ./node0.toml:/home/openethereum/node0.toml
+      - ./node.pwds:/home/openethereum/node.pwds
+      - ./script0.sh:/home/openethereum/script0.sh
+    entrypoint: sh -c 'sh ./script0.sh'
+
+  openethereum_1:
+    container_name: openethereum_1
+    image: openethereum/openethereum:latest
+    user: root
+    working_dir: /home/openethereum
+    volumes:
+      - ./demo-spec.json:/home/openethereum/demo-spec.json
+      - ./data/openethereum_1:/home/openethereum/data
+      - ./node1.startup.toml:/home/openethereum/node1.startup.toml
+      - ./node1.toml:/home/openethereum/node1.toml
+      - ./node.pwds:/home/openethereum/node.pwds
+      - ./script1.sh:/home/openethereum/script1.sh
+    entrypoint: sh -c 'sh ./script1.sh'

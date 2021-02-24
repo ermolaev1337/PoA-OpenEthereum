@@ -1,0 +1,44 @@
+[
+  {
+    "name"              : "openethereum_0",
+    "script"            : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"        : false,
+    "watch"             : true,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "node",
+    "exec_mode"         : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"        : "production",
+      "RPC_HOST"        : "openethereum_0",
+      "RPC_PORT"        : "8545",
+      "LISTENING_PORT"  : "30303",
+      "INSTANCE_NAME"   : "openethereum_0",
+      "WS_SERVER"       : "dashboard:3000",
+      "WS_SECRET"       : "FINATRAX",
+      "VERBOSITY"       : 3
+    }
+  },
+  {
+    "name"              : "openethereum_1",
+    "script"            : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"        : false,
+    "watch"             : true,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "node",
+    "exec_mode"         : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"        : "dev",
+      "RPC_HOST"        : "openethereum_1",
+      "RPC_PORT"        : "8545",
+      "LISTENING_PORT"  : "30303",
+      "INSTANCE_NAME"   : "openethereum_1",
+      "WS_SERVER"       : "dashboard:3000",
+      "WS_SECRET"       : "FINATRAX",
+      "VERBOSITY"       : 3
+    }
+  }
+]
